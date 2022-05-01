@@ -1,13 +1,13 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled, { keyframes } from "styled-components/macro";
 
-import { QUERIES, WEIGHTS } from '../../constants';
-import Logo from '../Logo';
-import Icon from '../Icon';
-import UnstyledButton from '../UnstyledButton';
-import SuperHeader from '../SuperHeader';
-import MobileMenu from '../MobileMenu';
-import VisuallyHidden from '../VisuallyHidden';
+import { QUERIES, WEIGHTS } from "../../constants";
+import Logo from "../Logo";
+import Icon from "../Icon";
+import UnstyledButton from "../UnstyledButton";
+import SuperHeader from "../SuperHeader";
+import MobileMenu from "../MobileMenu";
+import VisuallyHidden from "../VisuallyHidden";
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -20,12 +20,30 @@ const Header = () => {
           <Logo />
         </LogoWrapper>
         <DesktopNav>
-          <NavLink href="/sale">Sale</NavLink>
-          <NavLink href="/new">New&nbsp;Releases</NavLink>
-          <NavLink href="/men">Men</NavLink>
-          <NavLink href="/women">Women</NavLink>
-          <NavLink href="/kids">Kids</NavLink>
-          <NavLink href="/collections">Collections</NavLink>
+          <NavLink href="/sale">
+            <LinkSpan>Sale</LinkSpan>
+            <LinkSpanBold>Sale</LinkSpanBold>{" "}
+          </NavLink>
+          <NavLink href="/new">
+            <LinkSpan>New&nbsp;Releases</LinkSpan>
+            <LinkSpanBold>New&nbsp;Releases</LinkSpanBold>
+          </NavLink>
+          <NavLink href="/men">
+            <LinkSpan>Men</LinkSpan>
+            <LinkSpanBold>Men</LinkSpanBold>
+          </NavLink>
+          <NavLink href="/women">
+            <LinkSpan>Women</LinkSpan>
+            <LinkSpanBold>Women</LinkSpanBold>
+          </NavLink>
+          <NavLink href="/kids">
+            <LinkSpan>Kids</LinkSpan>
+            <LinkSpanBold>Kids</LinkSpanBold>
+          </NavLink>
+          <NavLink href="/collections">
+            <LinkSpan>Collections</LinkSpan>
+            <LinkSpanBold>Collections</LinkSpanBold>
+          </NavLink>
         </DesktopNav>
         <MobileActions>
           <ShoppingBagButton>
@@ -120,10 +138,41 @@ const NavLink = styled.a`
   text-decoration: none;
   color: var(--color-gray-900);
   font-weight: ${WEIGHTS.medium};
+  position: relative;
+  overflow: hidden;
 
   &:first-of-type {
     color: var(--color-secondary);
   }
+
+  &:hover span:first-of-type {
+    transform: translateY(-50px);
+    transition: transform 250ms ease-in;
+  }
+
+  &:hover span:last-of-type {
+    transform: translateY(0);
+    transition: transform 250ms ease-in;
+  }
+`;
+
+const LinkSpan = styled.span`
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  color: var(--color-gray-900);
+  transition: transform 250ms ease-out;
+`;
+
+const LinkSpanBold = styled.span`
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-weight: 800;
+  transform: translateY(50px);
+  color: var(--color-gray-900);
+  transition: transition 250ms ease-out;
 `;
 
 export default Header;

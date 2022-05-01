@@ -1,24 +1,51 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import styled from 'styled-components/macro';
-import { DialogOverlay, DialogContent } from '@reach/dialog';
+import React from "react";
+import styled from "styled-components/macro";
+import { DialogOverlay, DialogContent } from "@reach/dialog";
 
-import { QUERIES, WEIGHTS } from '../../constants';
+import { QUERIES, WEIGHTS } from "../../constants";
 
-import UnstyledButton from '../UnstyledButton';
-import Icon from '../Icon';
-import VisuallyHidden from '../VisuallyHidden';
+import UnstyledButton from "../UnstyledButton";
+import Icon from "../Icon";
+import VisuallyHidden from "../VisuallyHidden";
 
 const MobileMenu = ({ isOpen, onDismiss }) => {
   return (
-    <Overlay isOpen={isOpen} onDismiss={onDismiss}>
-      <Content aria-label="Menu">
+    <Overlay
+      isOpen={isOpen}
+      onDismiss={onDismiss}
+      style={{
+        opacity: isOpen ? 1 : 0,
+        transition: "opacity",
+        transitionDuration: isOpen ? "500ms" : "200ms",
+        transitionDelay: isOpen ? "0ms" : "50ms",
+        transitionTimingFunction: isOpen ? "ease-out" : "ease-in",
+      }}
+    >
+      <Content
+        aria-label="Menu"
+        style={{
+          opacity: isOpen ? 1 : 0,
+          transition: "opacity",
+          transitionDuration: isOpen ? "250ms" : "100ms",
+          transitionDelay: isOpen ? "500ms" : "50ms",
+          transitionTimingFunction: isOpen ? "ease-out" : "ease-in",
+        }}
+      >
         <CloseButton onClick={onDismiss}>
           <Icon id="close" />
           <VisuallyHidden>Dismiss menu</VisuallyHidden>
         </CloseButton>
         <Filler />
-        <Nav>
+        <Nav
+          style={{
+            opacity: isOpen ? 1 : 0,
+            transition: "opacity",
+            transitionDuration: isOpen ? "250ms" : "100ms",
+            transitionDelay: isOpen ? "200ms" : "50ms",
+            transitionTimingFunction: isOpen ? "ease-out" : "ease-in",
+          }}
+        >
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
           <NavLink href="/men">Men</NavLink>
@@ -26,7 +53,15 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
-        <Footer>
+        <Footer
+          style={{
+            opacity: isOpen ? 1 : 0,
+            transition: "opacity",
+            transitionDuration: isOpen ? "250ms" : "100ms",
+            transitionDelay: isOpen ? "200ms" : "50ms",
+            transitionTimingFunction: isOpen ? "ease-out" : "ease-in",
+          }}
+        >
           <SubLink href="/terms">Terms and Conditions</SubLink>
           <SubLink href="/privacy">Privacy Policy</SubLink>
           <SubLink href="/contact">Contact Us</SubLink>
