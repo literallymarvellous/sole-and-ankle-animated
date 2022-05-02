@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { keyframes } from "styled-components/macro";
+import styled from "styled-components/macro";
 
 import { QUERIES, WEIGHTS } from "../../constants";
 import Logo from "../Logo";
@@ -144,35 +144,35 @@ const NavLink = styled.a`
   &:first-of-type {
     color: var(--color-secondary);
   }
-
-  &:hover span:first-of-type {
-    transform: translateY(-50px);
-    transition: transform 250ms ease-in;
-  }
-
-  &:hover span:last-of-type {
-    transform: translateY(0);
-    transition: transform 250ms ease-in;
-  }
 `;
 
 const LinkSpan = styled.span`
   position: relative;
-  z-index: 1;
-  display: inline-block;
+  display: block;
   color: var(--color-gray-900);
-  transition: transform 250ms ease-out;
+  transform: translateY(0%);
+  transition: transform 450ms ease-out;
+
+  ${NavLink}:hover & {
+    transform: translateY(-100%);
+    transition: transform 250ms ease-in;
+  }
 `;
 
 const LinkSpanBold = styled.span`
-  display: inline-block;
+  display: block;
   position: absolute;
   top: 0;
   left: 0;
   font-weight: 800;
   transform: translateY(50px);
   color: var(--color-gray-900);
-  transition: transition 250ms ease-out;
+  transition: transition 450ms ease-out;
+
+  ${NavLink}:hover & {
+    transform: translateY(0);
+    transition: transform 250ms ease-in;
+  }
 `;
 
 export default Header;
